@@ -31,39 +31,35 @@ public class MedianFinder
         {
             ind1 = astart + (aend - astart) / 2;
             remainder1 = goal - ind1;
-            if (astart != aend)
+            test = TestForLesser(nums2, nums1[ind1], remainder1);
+            if (test == 0)
             {
-                test = TestForLesser(nums2, nums1[ind1], remainder1);
-                if (test == 0)
+                if (!evenLength)
                 {
-                    if (!evenLength)
-                    {
-                        return nums1[ind1];
-                    }
-
-                    lesserPartIn1 = true;
-                    lesserPart = nums1[ind1];
-                    break;
+                    return nums1[ind1];
                 }
+                lesserPartIn1 = true;
+                lesserPart = nums1[ind1];
+                break;
+            }
 
-                if (test > 0)
+            if (test > 0)
+            {
+                if (aend == ind1 && aend != 0) aend -= 1;
+                else aend = ind1;
+            }
+            else
+            {
+                if (astart == ind1 && astart != nums1.Length - 1)
                 {
-                    if (aend == ind1 && aend != 0) aend -= 1;
-                    else aend = ind1;
+                    astart += 1;
                 }
                 else
                 {
-                    if (astart == ind1 && astart != nums1.Length - 1)
-                    {
-                        astart += 1;
-                    }
-                    else
-                    {
-                        astart = ind1;
-                    }
+                    astart = ind1;
                 }
             }
-
+            
             ind2 = bstart + (bend - bstart) / 2;
             remainder2 = goal - ind2;
             test = TestForLesser(nums1, nums2[ind2], remainder2);
