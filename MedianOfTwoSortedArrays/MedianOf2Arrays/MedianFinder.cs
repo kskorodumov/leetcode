@@ -22,41 +22,50 @@ public class MedianFinder
         int bend = nums2.Length - 1;
         int lesserPart;
         bool lesserPartIn1 = false;
+        int ind1;
+        int remainder1;
+        int ind2;
+        int remainder2;
+        int test;
         while (true)
         {
-            int ind1 = astart + (aend - astart) / 2;
-            int remainder1 = goal - ind1;
-            int test = TestForLesser(nums2, nums1[ind1], remainder1);
-            if (test == 0)
+            ind1 = astart + (aend - astart) / 2;
+            remainder1 = goal - ind1;
+            if (astart != aend)
             {
-                if (!evenLength)
+                test = TestForLesser(nums2, nums1[ind1], remainder1);
+                if (test == 0)
                 {
-                    return nums1[ind1];
-                }
-                lesserPartIn1 = true;
-                lesserPart = nums1[ind1];
-                break;
-            }
+                    if (!evenLength)
+                    {
+                        return nums1[ind1];
+                    }
 
-            if (test > 0)
-            {
-                if (aend == ind1 && aend != 0) aend -= 1;
-                else aend = ind1;
-            }
-            else
-            {
-                if (astart == ind1 && astart != nums1.Length - 1)
+                    lesserPartIn1 = true;
+                    lesserPart = nums1[ind1];
+                    break;
+                }
+
+                if (test > 0)
                 {
-                    astart += 1;
+                    if (aend == ind1 && aend != 0) aend -= 1;
+                    else aend = ind1;
                 }
                 else
                 {
-                    astart = ind1;
+                    if (astart == ind1 && astart != nums1.Length - 1)
+                    {
+                        astart += 1;
+                    }
+                    else
+                    {
+                        astart = ind1;
+                    }
                 }
             }
-            
-            int ind2 = bstart + (bend - bstart) / 2;
-            int remainder2 = goal - ind2;
+
+            ind2 = bstart + (bend - bstart) / 2;
+            remainder2 = goal - ind2;
             test = TestForLesser(nums1, nums2[ind2], remainder2);
             
             if (test == 0)
@@ -87,27 +96,21 @@ public class MedianFinder
             }
         }
         //================
-        // if (lesserPartIn1)
-        // {
-        //     astart = 0;
-        //     aend = nums1.Length - 1;
-        // }
-        //
-        // if (!lesserPartIn1)
-        // {
-        //     bstart = 0;
-        //     bend = nums2.Length - 1;
-        // }
-        astart = 0;
-        aend = nums1.Length - 1;
-        bstart = 0;
-        bend = nums2.Length - 1;
+        if (!lesserPartIn1)
+        {
+            astart = 0;
+            aend = nums1.Length - 1;
+        } else
+        {
+            bstart = 0;
+            bend = nums2.Length - 1;
+        }
         goal += 1;
         while (true)
         {
-            int ind1 = astart + (aend - astart) / 2;
-            int remainder1 = goal - ind1;
-            int test = TestForLesser(nums2, nums1[ind1], remainder1);
+            ind1 = astart + (aend - astart) / 2;
+            remainder1 = goal - ind1;
+            test = TestForLesser(nums2, nums1[ind1], remainder1);
             if (test == 0)
             {
                 return (double)(lesserPart + nums1[ind1]) / 2;
@@ -130,8 +133,8 @@ public class MedianFinder
                 }
             }
             
-            int ind2 = bstart + (bend - bstart) / 2;
-            int remainder2 = goal - ind2;
+            ind2 = bstart + (bend - bstart) / 2;
+            remainder2 = goal - ind2;
             test = TestForLesser(nums1, nums2[ind2], remainder2);
             
             if (test == 0)
