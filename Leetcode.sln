@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedianOfTwoSortedArrays", "MedianOfTwoSortedArrays\MedianOfTwoSortedArrays.csproj", "{B337718F-BA44-45ED-A0FC-1BCD499C6945}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problems", "Problems\Problems.csproj", "{B337718F-BA44-45ED-A0FC-1BCD499C6945}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
