@@ -27,6 +27,12 @@ public class MedianFinderTests
     [InlineData(new[] {1, 2, 3}, new [] {100, 200, 201}, 51.5)]
     [InlineData(new[] {0,0,0,0,0}, new [] {-1,0,0,0,0,0,1}, 0)]
     [InlineData(new[] {1, 2, 3, 5}, new [] {2, 3}, 2.5)]
+    [InlineData(new[] {1}, new [] {1}, 1)]
+    [InlineData(new[] {1}, new [] {2,3,4}, 2.5)]
+    [InlineData(new[] {4}, new [] {1,2,3}, 2.5)]
+    [InlineData(new[] {4}, new [] {1,2,3,5}, 3)]
+    [InlineData(new[] {7}, new [] {1,2,3,4,5,6,8,9}, 5)]
+    [InlineData(new[] {1,2}, new [] {3,4,5,6,7,8,9}, 5)]
     public void FindTwosArraysMedianTest(int[] a, int[] b, double expected)
     {
         var actual = MedianFinder.FindMedianSortedArrays(a, b);

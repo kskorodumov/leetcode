@@ -40,11 +40,12 @@ public class MedianFinder
 
             if (test > 0)
             {
-                aend = ind1;
+                if (aend == ind1 && aend != 0) aend -= 1;
+                else aend = ind1;
             }
             else
             {
-                if (astart == ind1)
+                if (astart == ind1 && astart != nums1.Length - 1)
                 {
                     astart += 1;
                 }
@@ -70,32 +71,37 @@ public class MedianFinder
 
             if (test > 0)
             {
-                bend = ind2;
+                if (bend == ind2 && bend != 0) bend -= 1;
+                else bend = ind2;
             }
             else
             {
-                if (bstart == ind2)
+                if (bstart == ind2 && bstart != nums2.Length - 1)
                 {
                     bstart += 1;
                 }
                 else
                 {
-                    bstart = ind1;
+                    bstart = ind2;
                 }
             }
         }
         //================
-        if (!lesserPartIn1)
-        {
-            astart = 0;
-            aend = nums1.Length - 1;
-        }
-
-        if (lesserPartIn1)
-        {
-            bstart = 0;
-            bend = nums2.Length - 1;
-        }
+        // if (lesserPartIn1)
+        // {
+        //     astart = 0;
+        //     aend = nums1.Length - 1;
+        // }
+        //
+        // if (!lesserPartIn1)
+        // {
+        //     bstart = 0;
+        //     bend = nums2.Length - 1;
+        // }
+        astart = 0;
+        aend = nums1.Length - 1;
+        bstart = 0;
+        bend = nums2.Length - 1;
         goal += 1;
         while (true)
         {
@@ -109,7 +115,8 @@ public class MedianFinder
 
             if (test > 0)
             {
-                aend = ind1;
+                if (aend == ind1 && aend != 0) aend -= 1;
+                else aend = ind1;
             }
             else
             {
@@ -134,7 +141,8 @@ public class MedianFinder
 
             if (test > 0)
             {
-                bend = ind2;
+                if (bend == ind2 && bend != 0) bend -= 1;
+                else bend = ind2;
             }
             else
             {
@@ -144,7 +152,7 @@ public class MedianFinder
                 }
                 else
                 {
-                    bstart = ind1;
+                    bstart = ind2;
                 }
             }
         }
@@ -158,10 +166,13 @@ public class MedianFinder
     
     public static int TestForLesser(int[] a, int x, int goal)
     {
+        if (goal < 0) return 1;
+            
         if (a.Length == 1)
         {
+            if (goal > 1) return -1;
             if (a[0] <= x && goal == 1) return 0;
-            if (a[0] > x && goal == 0) return 0;
+            if (a[0] >= x && goal == 0) return 0;
 
             if (a[0] > x) return -1;
             return 1;
@@ -181,7 +192,7 @@ public class MedianFinder
                 return -1;
             }
 
-            return 1;
+            return -1;
         }
         if (a[goal - 1] <= x && a[goal] >= x)
         {
