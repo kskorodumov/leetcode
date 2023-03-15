@@ -1,23 +1,8 @@
 namespace MedianOfTwoSortedArrays.MaximumGap;
 
-public class MaximumGapFinder
+public class RadixSort
 {
-    public int MaximumGap(int[] nums)
-    {
-        if (nums.Length <= 1) return 0;
-        int[] sorted = Sort(nums);
-
-        int gap = 0;
-
-        for (int i = 1; i < nums.Length; i++)
-        {
-            int c = Math.Abs(sorted[i - 1] - sorted[i]);
-            gap = Math.Max(gap, c);
-        }
-        return gap;
-    }
-    
-    private int[] Sort(int[] a)
+    public int[] Sort(int[] a)
     {
         int max = 0;
 
@@ -27,7 +12,7 @@ public class MaximumGapFinder
         }
 
         var bas = 10;
-        int maxDig = (int)Math.Ceiling(Math.Log(max, bas)) + 1;
+        int maxDig = (int)Math.Ceiling(Math.Log(max, bas));
 
         return DigitSort(a, bas, maxDig);
     }
