@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Xunit;
 
-namespace MedianOfTwoSortedArrays.MedianOf2Arrays.Tests;
+namespace MedianOf2Arrays.Tests;
 
 public class MedianFinderTests
 {

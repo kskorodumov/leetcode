@@ -1,4 +1,4 @@
-namespace MedianOfTwoSortedArrays.MaximumGap;
+namespace MaximumGap;
 
 public class RadixSort
 {

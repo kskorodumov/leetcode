@@ -1,7 +1,8 @@
 using FluentAssertions;
+using MaximumGap;
 using Xunit;
 
-namespace MedianOfTwoSortedArrays.MaximumGap;
+namespace MaximumGap.Tests;
 
 public class CountingSortTests
 {

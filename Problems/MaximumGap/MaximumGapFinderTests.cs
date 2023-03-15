@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Xunit;
 
-namespace MedianOfTwoSortedArrays.MaximumGap;
+namespace MaximumGap.Tests;
 
 public class MaximumGapFinderTests
 {

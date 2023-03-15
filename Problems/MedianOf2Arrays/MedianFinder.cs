@@ -1,4 +1,4 @@
-namespace MedianOfTwoSortedArrays.MedianOf2Arrays;
+namespace MedianOf2Arrays;
 
 public class MedianFinder
 {
